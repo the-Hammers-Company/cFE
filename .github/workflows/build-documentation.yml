@@ -68,9 +68,10 @@ jobs:
       deploy: false  # Note can't use cache with deploy, deploy in following job instead
 
   build-mission-doc:
+    # see cFS issue #877, here: https://github.com/nasa/cFS/issues/877
+    if: false # This will prevent the job from ever running
     needs: checkout-and-cache
     name: Build Mission Doc
-    #uses: nasa/cFS/.github/workflows/build-deploy-doc.yml
     uses: nasa/cFS/.github/workflows/build-deploy-doc.yml@main
     with:
       target: "[\"mission-doc\"]"
